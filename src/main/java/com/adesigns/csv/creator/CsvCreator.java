@@ -12,9 +12,9 @@
  * governing permissions and limitations under the License.
  */
 
-package org.adesigns.csv.creator;
+package com.adesigns.csv.creator;
 
-import org.adesigns.csv.util.ObjectReader;
+import com.adesigns.csv.util.ObjectReader;
 
 import java.io.IOException;
 import java.io.Writer;

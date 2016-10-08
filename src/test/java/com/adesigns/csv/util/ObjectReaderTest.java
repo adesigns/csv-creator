@@ -12,10 +12,9 @@
  * governing permissions and limitations under the License.
  */
 
-package org.adesigns.csv.util;
+package com.adesigns.csv.util;
 
-import org.adesigns.csv.mock.Pojo;
-import org.adesigns.csv.util.ObjectReader;
+import com.adesigns.csv.mock.Pojo;
 import org.junit.Assert;
 import org.junit.Test;
 

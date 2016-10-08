@@ -12,10 +12,10 @@
  * governing permissions and limitations under the License.
  */
 
-package org.adesigns.csv.util;
+package com.adesigns.csv.util;
 
-import org.adesigns.csv.annotation.CsvColumn;
-import org.adesigns.csv.exception.MissingAnnotationException;
+import com.adesigns.csv.annotation.CsvColumn;
+import com.adesigns.csv.exception.MissingAnnotationException;
 
 import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;
@@ -61,6 +61,7 @@ public class ObjectReader {
             if (!field.isAnnotationPresent(CsvColumn.class)) {
                 continue;
             }
+
             field.setAccessible(true);
 
             // add blank data if field is null

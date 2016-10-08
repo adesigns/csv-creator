@@ -12,9 +12,9 @@
  * governing permissions and limitations under the License.
  */
 
-package org.adesigns.csv.mock;
+package com.adesigns.csv.mock;
 
-import org.adesigns.csv.annotation.CsvColumn;
+import com.adesigns.csv.annotation.CsvColumn;
 
 import java.util.Date;
 

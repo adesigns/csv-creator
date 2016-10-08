@@ -12,7 +12,7 @@
  * governing permissions and limitations under the License.
  */
 
-package org.adesigns.csv.exception;
+package com.adesigns.csv.exception;
 
 public class MissingAnnotationException extends RuntimeException {
     public MissingAnnotationException() {

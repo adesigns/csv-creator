@@ -1,4 +1,4 @@
-group 'org.adesigns'
+group 'com.adesigns'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
