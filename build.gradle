@@ -1,5 +1,7 @@
 plugins {
     id 'net.researchgate.release' version '2.4.0'
+    id 'net.saliman.cobertura' version '2.3.1'
+    id 'com.github.kt3k.coveralls' version '2.6.3'
 }
 
 apply plugin: 'java'
@@ -17,9 +19,15 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
+
+    // this is used for cobertura to work properly, otherwise throws a bunch of NoClassDef
+    testRuntime "org.slf4j:slf4j-log4j12:1.7.5"
+    testRuntime "log4j:log4j:1.2.7"
 }
 
 afterReleaseBuild.dependsOn uploadArchives
+
+cobertura.coverageFormats = ['html', 'xml'] // coveralls plugin depends on xml format report
 
 task javadocJar(type: Jar) {
     classifier = 'javadoc'
