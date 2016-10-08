@@ -3,8 +3,11 @@ plugins {
 }
 
 apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'signing'
 
-group 'com.github.adesigns'
+group = "com.github.adesigns"
+archivesBaseName="csv-creator"
 
 sourceCompatibility = 1.7
 
@@ -14,4 +17,70 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+
+afterReleaseBuild.dependsOn uploadArchives
+
+task javadocJar(type: Jar) {
+    classifier = 'javadoc'
+    from javadoc
+}
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+artifacts {
+    archives jar
+    archives javadocJar, sourcesJar
+}
+
+signing {
+    sign configurations.archives
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+            repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+                authentication(userName: ossrhUsername, password: ossrhPassword)
+            }
+
+            snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+                authentication(userName: ossrhUsername, password: ossrhPassword)
+            }
+
+            pom.project {
+                name 'CSV Creator'
+                packaging 'jar'
+                // optionally artifactId can be defined here
+                description 'Dead-simple way to generate CSV output.'
+                url 'https://github.com/adesigns/csv-creator'
+
+                scm {
+                    connection 'scm:git@github.com:adesigns/csv-creator.git'
+                    developerConnection 'scm:git@github.com:adesigns/csv-creator.git'
+                    url 'https://github.com/adesigns/csv-creator'
+                }
+
+                licenses {
+                    license {
+                        name 'The Apache License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id 'mikeyudin'
+                        name 'Michael Yudin'
+                        email 'chat@albanydesigns.com'
+                    }
+                }
+            }
+        }
+    }
 }
