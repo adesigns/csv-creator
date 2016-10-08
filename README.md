@@ -13,7 +13,7 @@ Add the dependency to your pom.xml:
 
 ```xml
 <dependency>
-  <groupId>com.adesigns</groupId>
+  <groupId>com.github.adesigns</groupId>
   <artifactId>csv-creator</artifactId>
   <version>1.0.0</version>
 </dependency>
@@ -23,7 +23,7 @@ Add the dependency to your pom.xml:
 Add the dependency to your build.gradle:
 
 ```groovy
-compile 'com.adesigns:csv-creator:1.0.0'
+compile 'com.github.adesigns:csv-creator:1.0.0'
 ```
 
 ## Basic Usage

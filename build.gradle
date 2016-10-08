@@ -4,7 +4,7 @@ plugins {
 
 apply plugin: 'java'
 
-group 'com.adesigns'
+group 'com.github.adesigns'
 
 sourceCompatibility = 1.7
 
