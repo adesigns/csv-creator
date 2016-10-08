@@ -1,7 +1,10 @@
+plugins {
+    id 'net.researchgate.release' version '2.4.0'
+}
+
 apply plugin: 'java'
 
 group 'com.adesigns'
-version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.7
 
