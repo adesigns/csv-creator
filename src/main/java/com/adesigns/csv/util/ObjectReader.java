@@ -15,7 +15,6 @@
 package com.adesigns.csv.util;
 
 import com.adesigns.csv.annotation.CsvColumn;
-import com.adesigns.csv.exception.MissingAnnotationException;
 
 import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;
@@ -36,7 +35,7 @@ public class ObjectReader {
 
         for (Field field : pojoClass.getDeclaredFields()) {
             if (!field.isAnnotationPresent(CsvColumn.class)) {
-                throw new MissingAnnotationException("Field '" + field.getName() + "' is missing the @CsvColumn annotation.");
+                continue;
             }
 
             CsvColumn csvColumn = field.getAnnotation(CsvColumn.class);

@@ -45,12 +45,29 @@ public class CsvCreatorTest {
 
         String[] firstRow = rows[0].split(",");
         Assert.assertEquals("String 1", firstRow[0]);
-       // Assert.assertEquals(pojoList.get(0).getDateColumn().toString(), firstRow[2]);
+        // Assert.assertEquals(pojoList.get(0).getDateColumn().toString(), firstRow[2]);
 
 
         String[] secondRow = rows[1].split(",");
         Assert.assertEquals("String 2", secondRow[0]);
         //Assert.assertEquals(pojoList.get(1).getDateColumn().toString(), secondRow[2]);
+    }
+
+    @Test
+    public void testWriteRowRequiringEscape() throws Exception {
+        final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        Writer writer = new OutputStreamWriter(outputStream);
+        CsvCreator<Pojo> csvCreator = new CsvCreator<Pojo>(writer, Pojo.class);
+
+        Pojo pojo = new Pojo();
+        pojo.setStringColumn("I require, \"\n\rquotes!");
+
+        csvCreator.writeRow(pojo);
+
+        writer.close();
+
+        final String output = new String(outputStream.toByteArray(), "UTF-8");
+        Assert.assertEquals("\"" + pojo.getStringColumn() + "\",,\n", output);
     }
 
     @Test
