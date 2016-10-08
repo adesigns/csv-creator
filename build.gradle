@@ -1,10 +1,9 @@
+apply plugin: 'java'
+
 group 'com.adesigns'
 version '1.0-SNAPSHOT'
 
-apply plugin: 'java'
-apply plugin: 'jacoco'
-
-sourceCompatibility = 1.6
+sourceCompatibility = 1.7
 
 repositories {
     mavenCentral()
@@ -13,13 +12,3 @@ repositories {
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
 }
-
-
-jacocoTestReport {
-    reports {
-        xml.enabled = true
-        html.enabled = true
-    }
-}
-
-check.dependsOn jacocoTestReport
