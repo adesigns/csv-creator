@@ -1,8 +1,10 @@
+
 # CSV Creator
 A super-simple library to generate CSVs from POJOs.  Allows you to define the expected output of a CSV file by creating a POJO marked with annotations.
-https://img.shields.io/coveralls/jekyll/jekyll.svg
+
 [![Build Status](https://img.shields.io/travis/adesigns/csv-creator.svg)](https://travis-ci.org/adesigns/csv-creator)
 [![Code Coverage](https://img.shields.io/coveralls/adesigns/csv-creator.svg)](https://coveralls.io/github/adesigns/csv-creator)
+
 
 ## Installation
 
