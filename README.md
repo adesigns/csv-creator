@@ -15,7 +15,7 @@ Add the dependency to your pom.xml:
 <dependency>
   <groupId>com.github.adesigns</groupId>
   <artifactId>csv-creator</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.2</version>
 </dependency>
 ```
 ### via Gradle
@@ -23,7 +23,7 @@ Add the dependency to your pom.xml:
 Add the dependency to your build.gradle:
 
 ```groovy
-compile 'com.github.adesigns:csv-creator:1.0.0'
+compile 'com.github.adesigns:csv-creator:1.0.2'
 ```
 
 ## Basic Usage
@@ -92,9 +92,10 @@ pojoList.add(secondPojo);
 ```
 
 ```java
-final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+Writer writer = new OutputStreamWriter(outputStream);
 
-CsvCreator<Pojo> csvCreator = new CsvCreator<Pojo>(new OutputStreamWriter(outputStream), Pojo.class);
+CsvCreator<Pojo> csvCreator = new CsvCreator<Pojo>(writer, Pojo.class);
 
 csvCreator.write(pojoList);
 
