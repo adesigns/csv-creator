@@ -1,15 +1,26 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        //Needed only for SNAPSHOT versions
+        //maven { url "http://oss.sonatype.org/content/repositories/snapshots/" }
+    }
+    dependencies {
+        classpath "io.codearte.gradle.nexus:gradle-nexus-staging-plugin:0.5.3"
+    }
+}
+
 plugins {
     id 'net.researchgate.release' version '2.4.0'
     id 'net.saliman.cobertura' version '2.3.1'
     id 'com.github.kt3k.coveralls' version '2.6.3'
 }
 
+apply plugin: 'io.codearte.nexus-staging'
 apply plugin: 'java'
 apply plugin: 'maven'
 apply plugin: 'signing'
 
 group = "com.github.adesigns"
-archivesBaseName="csv-creator"
 
 sourceCompatibility = 1.7
 
@@ -25,7 +36,8 @@ dependencies {
     testRuntime "log4j:log4j:1.2.7"
 }
 
-afterReleaseBuild.dependsOn uploadArchives
+closeRepository.dependsOn uploadArchives
+afterReleaseBuild.dependsOn closeAndPromoteRepository
 
 cobertura.coverageFormats = ['html', 'xml'] // coveralls plugin depends on xml format report
 
