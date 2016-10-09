@@ -23,6 +23,10 @@ public class Pojo {
     @CsvColumn(title = "String Column")
     private String stringColumn;
 
+    // this column won't be written since it isn't marked
+    // with the @CsvColumn annotation.
+    private String skippedColumn;
+
     @CsvColumn(title = "Integer Column")
     private Integer integerColumn;
 
@@ -51,5 +55,13 @@ public class Pojo {
 
     public void setDateColumn(Date dateColumn) {
         this.dateColumn = dateColumn;
+    }
+
+    public String getSkippedColumn() {
+        return skippedColumn;
+    }
+
+    public void setSkippedColumn(String skippedColumn) {
+        this.skippedColumn = skippedColumn;
     }
 }

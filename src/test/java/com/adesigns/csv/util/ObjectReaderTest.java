@@ -28,7 +28,7 @@ public class ObjectReaderTest {
 
         List<String> headerColumns = ObjectReader.getHeaderColumns(Pojo.class);
 
-        Assert.assertEquals(Pojo.class.getDeclaredFields().length, headerColumns.size());
+        Assert.assertEquals(3, headerColumns.size());
         Assert.assertEquals("String Column", headerColumns.get(0));
         Assert.assertEquals("Integer Column", headerColumns.get(1));
         Assert.assertEquals("Date Column", headerColumns.get(2));
@@ -40,7 +40,7 @@ public class ObjectReaderTest {
 
         List<Object> rowColumns = ObjectReader.getRow(pojo);
 
-        Assert.assertEquals(Pojo.class.getDeclaredFields().length, rowColumns.size());
+        Assert.assertEquals(3, rowColumns.size());
         Assert.assertEquals("I am a string.", rowColumns.get(0));
         Assert.assertEquals(123, rowColumns.get(1));
     }
@@ -53,7 +53,7 @@ public class ObjectReaderTest {
 
         List<Object> rowColumns = ObjectReader.getRow(pojo);
 
-        Assert.assertEquals(Pojo.class.getDeclaredFields().length, rowColumns.size());
+        Assert.assertEquals(3, rowColumns.size());
         Assert.assertEquals("", rowColumns.get(0));
         Assert.assertEquals(123, rowColumns.get(1));
     }
