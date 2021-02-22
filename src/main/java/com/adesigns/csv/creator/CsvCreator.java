@@ -26,8 +26,6 @@ public class CsvCreator<T> {
 
     private static final char CSV_QUOTE = '"';
 
-    private static final String CSV_ESC_QUOTE = "\"";
-
     private Writer writer;
 
     private Class<T> clazz;
@@ -121,7 +119,7 @@ public class CsvCreator<T> {
         String result = value;
 
         if (requiresCsvEscape(result)) {
-            result = CSV_ESC_QUOTE + result + CSV_ESC_QUOTE;
+            result = StringEscapeUtils.escapeCsv(result);
         }
 
         return result;
